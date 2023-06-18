@@ -10,7 +10,7 @@ export default class Form extends Component {
     }
 
     render() {
-        let {renderActionName, renderStudent} = this.props //lấy tên nút để hiển thị
+        let {renderActionName, renderStudents} = this.props //lấy tên nút để hiển thị
         return (
             <>
                 <div className="card">
@@ -20,51 +20,48 @@ export default class Form extends Component {
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Mã sinh viên</label>
                                 <div className="col-sm-9">
-                                    <input type="text" className="form-control" value={renderStudent.studentId}/>
+                                    <input type="text" className="form-control" value={renderStudents.studentId}/>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Tên sinh viên</label>
                                 <div className="col-sm-9">
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control" value={renderStudents.studentName}/>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Tuổi</label>
                                 <div className="col-sm-9">
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control" value={renderStudents.age}/>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Giới tính</label>
                                 <div className="col-sm-9">
-                                    <select className="form-control">
-                                        <option>Nam</option>
-                                        <option>Nữ</option>
-                                    </select>
+                                <input type="text" className="form-control" value={renderStudents.sex ? "Nam" : "Nữ"}/>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Ngày sinh</label>
                                 <div className="col-sm-9">
-                                    <input className="form-control" placeholder="dd/mm/yyyy" />
+                                    <input className="form-control" placeholder="dd/mm/yyyy" value={renderStudents.birthDate}/>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Nơi sinh</label>
                                 <div className="col-sm-9">
-                                    <select className="form-control">
-                                        <option>Hà Nội</option>
-                                        <option>TP. Hồ Chí Minh</option>
-                                        <option>Đà Nẵng</option>
-                                        <option>Quảng Ninh</option>
+                                    <select className="form-control" value={renderStudents.birthPlace}>
+                                        <option value={"HN"}>Hà Nội</option>
+                                        <option value={"HCM"}>TP. Hồ Chí Minh</option>
+                                        <option value={"ĐN"}>Đà Nẵng</option>
+                                        <option value={"QN"}>Quảng Ninh</option>
                                     </select>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-3 col-form-label">Địa chỉ</label>
                                 <div className="col-sm-9">
-                                    <textarea className="form-control" defaultValue={""} />
+                                    <input type="text" className="form-control" value={renderStudents.address}/>
                                 </div>
                             </div>
                             <button 
