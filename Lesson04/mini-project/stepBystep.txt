@@ -1,0 +1,48 @@
+-----Mock Project - Student Management System
+1. Tạo ứng dụng Reactjs: mini-project
+2. Sử dụng thiết kế ( html - Reactjs Basic )
+    - Chuyển basic_react.html => jsx (transform.tool)
+    - Copy code JSX => App.jsx
+    - Copy folder css => public
+    - index.html => tạo liên kết đến css
+3. Phân tách thành phần giao diện
+    - Phân chia các component (view)
+        + App
+            + Control
+            + ListStudent
+                + student
+            + Form
+4. Thực hiện tách các thành phần từ giao diện
+
+5. Thực hiện chức năng -> hiển thị dữ liệu
+App:
+    - Tạo mock data trong state
+    - render -> ListStudent -> Student
+    - Hiển thị dữ liệu trên Student
+
+6. Xử lý Ẩn/hiện form với các chức năng (Xem/Thêm/Sửa)
+App: Form chưa hiển thị
+    - Chọn chức năng thêm mới, sửa, xem 
+     => Hiển thị component form
+    - Trong component App => quản lý trạng thái của form
+        + isToggle: true/false
+            true: hiển thị
+            false: Ẩn
+    +> Khi người dùng chọn thêm mới
+        - Control component
+            + Phát sinh sự kiện thêm (nút thêm mới)
+            + Chuyển thông tin lên => App => Cập nhật lại isToggle là true
+    +> Hiển thị chọn chức năng xem (khi phát sinh sự kiện cần có hàm xử lý sự kiện)
+        - Student component
+            + Phát sinh sự kiện onClick trên nút xem
+            + Chuyển thông tin (isToggle: true) lên ListStudent thông qua props
+                -> Từ ListStudent -> Chuyển thông tin lên App
+                -> Trên App thực hiện sự kiện handleAddOrUpdate
+    +> Hiển thị Form khi người dùng chọn chức năng Sửa
+        - Student Componnent
+    +> Đóng form
+        - Form:
+         + Phát sinh sự kiện (onClick={this.handleSubmit})
+         + Chuyển thông tin lên App -> set isToggle = flase
+7. Chức năng 
+. Thực hiện thêm mới dữ liệu từ form (From)
