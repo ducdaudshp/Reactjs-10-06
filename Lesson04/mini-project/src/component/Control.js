@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class Control extends Component {
 
     //khi click chọn thêm mới
-    hanldeAdd = (event) => {
-        this.props.onAdd(true, "Add"); //cập nhật lại isToggle trên app là true
+    hanldeAdd = (isToggle) => {
+        this.props.onAdd(true, "Add", isToggle); //cập nhật lại isToggle trên app là true
     }
 
     render() {

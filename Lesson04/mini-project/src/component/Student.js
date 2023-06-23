@@ -6,8 +6,8 @@ export default class Student extends Component {
         this.props.onView(true, "Close", student);
     }
 
-    hanldeUpdate = () => {
-        this.props.onUpdate(true, "Edit");
+    hanldeUpdate = (student) => {
+        this.props.onUpdate(true, "Edit", student);
     }
 
     render() {
@@ -26,14 +26,14 @@ export default class Student extends Component {
                             <button
                                 type="button"
                                 className="btn btn-danger btn-icon-text"
-                                onClick={()=>this.hanldeView(renderStudent)}
+                                onClick={() => this.hanldeView(renderStudent)}
                             >
                                 Xem
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-warning btn-icon-text"
-                                onClick={this.hanldeUpdate}
+                                onClick={() => this.hanldeUpdate(renderStudent)}
                             >
                                 Sửa
                             </button>

@@ -8,8 +8,8 @@ export default class ListStudent extends Component {
         this.props.onView(toggle, actionName, student);
     }
 
-    handleUpdate = (toggle, actionName) => {
-        this.props.onUpdate(toggle, actionName);
+    handleUpdate = (toggle, actionName, student) => {
+        this.props.onUpdate(toggle, actionName, student);
     }
 
     render() {

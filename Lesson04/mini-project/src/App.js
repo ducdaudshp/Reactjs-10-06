@@ -16,7 +16,7 @@ export class App extends Component {
       ], //mang ds sinh vien
       isToggle: false, //quản lý trạng thái ẩn/hiện form
       actionName: "", //thuộc tính xử lý hiển thị nút submit trên form
-      student: "", // quản lý đối tượng dữ liệu cho Form
+      student: {}, // quản lý đối tượng dữ liệu cho Form
     }
   }
 
@@ -39,8 +39,8 @@ export class App extends Component {
     // ẩn/hiện form theo isToggle
     let elementForm = (this.state.isToggle === true) ? 
         <Form renderActionName={this.state.actionName}
-              onSubmit={this.handleSubmit}
               renderStudents={this.state.student}
+              onSubmit={this.handleSubmit}
         /> : ""
     return (
       <div className="container-fluid">
