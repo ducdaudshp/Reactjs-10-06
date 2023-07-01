@@ -12,6 +12,10 @@ export default class ListStudent extends Component {
         this.props.onUpdate(toggle, actionName, student);
     }
 
+    handleDelete = (student) => {
+        this.props.onDelete(student);
+    }
+
     render() {
         let {renderStudents} = this.props;
         //render du lieu vao cac student
@@ -22,6 +26,7 @@ export default class ListStudent extends Component {
                 stt={index+1} 
                 onView={this.handleView}
                 onUpdate={this.handleUpdate}
+                onDelete={this.handleDelete}
                 />
         })
         return (

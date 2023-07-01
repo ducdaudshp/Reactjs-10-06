@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 
 export default class Student extends Component {
-
+    //hàm xử lý khi xem
     hanldeView = (student) => {
         this.props.onView(true, "Close", student);
     }
-
+    //hàm xử lý khi sửa
     hanldeUpdate = (student) => {
         this.props.onUpdate(true, "Edit", student);
+    }
+    //hàm xử lý khi xóa
+    hanldeDelete = (student) => {
+        this.props.onDelete(student);
     }
 
     render() {
@@ -20,7 +24,7 @@ export default class Student extends Component {
                     <td>{renderStudent.studentId}</td>
                     <td>{renderStudent.studentName}</td>
                     <td>{renderStudent.age}</td>
-                    <td>{renderStudent.sex ? "Nam" : "Nữ"}</td>
+                    <td>{renderStudent.sex === true | renderStudent === "true" ? "Nam" : "Nữ"}</td>
                     <td>
                         <div className="template-demo">
                             <button
@@ -40,6 +44,7 @@ export default class Student extends Component {
                             <button
                                 type="button"
                                 className="btn btn-success btn-icon-text"
+                                onClick={() => this.hanldeDelete(renderStudent)}
                             >
                                 Xóa
                             </button>
