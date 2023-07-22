@@ -1,0 +1,13 @@
+--React basic--
+- component:
+    + class component
+    + function component
+- props: trao đổi dữ liệu giữa các component
+    -> component cha -> component con -> props(render)
+    -> component con -> component cha -> props(event)
+- state: quản lý dữ liệu trong component -> chỉ tồn tại trong component -> chỉ sử dụng với class component
+- event form: 
+    + controlled form
+    + uncontroled form
+- list key -> render
+    + mảng dữ liệu -> map to -> từng đối tượng -> hiển thị
