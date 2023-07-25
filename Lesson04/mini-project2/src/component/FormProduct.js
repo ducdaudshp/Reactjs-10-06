@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 
 export default class FormProduct extends Component {
+    //hàm xử lý sự kiện submit form
+    handleSubmit = (event, actionName) => {
+        event.preventDefault();
+        //chuyển thông tin lên App thông qua props
+        this.props.onSubmit(false, actionName)
+    }
+
     render() {
+        let {actionName, renderProduct} = this.props; //lấy tên nút để hiển thị
         return (
             <>
                 <div className="card">
@@ -14,6 +22,7 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
+                                        value={renderProduct.productId}
                                     />
                                 </div>
                             </div>
@@ -23,6 +32,7 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
+                                        value={renderProduct.productName}
                                     />
                                 </div>
                             </div>
@@ -32,6 +42,7 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
+                                        value={renderProduct.descriptions}
                                     />
                                 </div>
                             </div>
@@ -41,6 +52,7 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
+                                        value={renderProduct.price}
                                     />
                                 </div>
                             </div>
@@ -50,6 +62,7 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
+                                        value={renderProduct.quantity}
                                     />
                                 </div>
                             </div>
@@ -65,7 +78,8 @@ export default class FormProduct extends Component {
                             <button
                                 type="submit"
                                 className="btn btn-primary me-2"
-                            > Add
+                                onClick={(event) => this.handleSubmit(event, actionName)}
+                            > {actionName}
                             </button>
                         </form>
                     </div>

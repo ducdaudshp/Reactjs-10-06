@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import Product from './Product';
 
 export default class ListProduct extends Component {
+
+    //hàm xử lý cho sự kiện xem
+    handleView = (toggle, actionName, product) => {
+        this.props.onView(toggle, actionName, product);
+    }
+
+    //hàm xử lý sự kiện Edit
+    handleEdit = (toggle, actionName) => {
+        this.props.onEdit(toggle, actionName);
+    }
+
     render() {
         let { renderProducts } = this.props;
         let elementProduct = renderProducts.map((product, index) => {
@@ -9,6 +20,8 @@ export default class ListProduct extends Component {
                 key={index}
                 renderProduct={product}
                 stt={index + 1}
+                onView={this.handleView}
+                onEdit={this.handleEdit}
             />
         })
         return (

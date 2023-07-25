@@ -40,11 +40,38 @@ export default class App extends Component {
           quantity: 8,
           image: "target-leap-frog.jpg"
         }
-      ]
+      ],
+
+      isToggle: false, //quản lý trạng thái ẩn hiện form
+      actionName: "", // thuộc tính xử lý hiển thị nút submit trên form
+      product: {}, //quản lý đối tượn dữ liệu cho Form
     }
   }
+
+  //xử lý sự kiện
+  handleAddOrUpdate = (toggle, actionName, product) => {
+    this.setState({
+      isToggle: toggle,
+      actionName: actionName,
+      product: product
+    })
+  }
+
+  //hàm xử lý sự kiện sunmit Form
+  handleSubmit = (toggle, actionName) => {
+    this.handleAddOrUpdate(toggle, actionName);
+  }
+
   render() {
     let { products } = this.state;
+
+    // ẩn hiển form theo isToggle
+    let elementForm = (this.state.isToggle === true) ?
+      <FormProduct
+        actionName={this.state.actionName}
+        onSubmit={this.handleSubmit}
+        renderProduct={this.state.product}
+      /> : "";
     return (
       <>
         <div className="container-fluid">
@@ -52,16 +79,22 @@ export default class App extends Component {
             <div className="col-lg-7 grid-margin stretch-card">
               <div className="card">
                 {/* Control */}
-                <Control />
+                <Control
+                  onAdd={this.handleAddOrUpdate}
+                />
                 {/* Control */}
                 {/* ListStudent */}
-                <ListProduct renderProducts={products} />
+                <ListProduct
+                  renderProducts={products}
+                  onView={this.handleAddOrUpdate}
+                  onEdit={this.handleAddOrUpdate}
+                />
                 {/* ListStudent */}
               </div>
             </div>
             <div className="col-5 grid-margin">
               {/* form */}
-              <FormProduct />
+              {elementForm}
               {/* form */}
             </div>
           </div>

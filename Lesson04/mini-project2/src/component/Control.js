@@ -1,45 +1,51 @@
 import React, { Component } from 'react'
 
 export default class Control extends Component {
-  render() {
-    return (   
-    <>
-        <div className="card-header">
-            <div className="row">
-                <div className="col-3 ">
-                    <button 
-                        type="button" 
-                        className="btn btn-primary btn-icon-text"
-                        onClick={this.hanldeAdd}
-                        >
-                        Thêm mới sản phẩm
-                    </button>
+
+    //khi click chọn thêm mới
+    handleAdd = (event) => {
+        this.props.onAdd(true, "Add"); //cập nhật lại isToggle trên App là true
+    }
+
+    render() {
+        return (
+            <>
+                <div className="card-header">
+                    <div className="row">
+                        <div className="col-3 ">
+                            <button
+                                type="button"
+                                className="btn btn-primary btn-icon-text"
+                                onClick={this.handleAdd}
+                            >
+                                Thêm mới sản phẩm
+                            </button>
+                        </div>
+                        <div className="col-6 ">
+                            <form className="search-form" action="#">
+                                <i className="icon-search" />
+                                <input
+                                    type="search"
+                                    className="form-control"
+                                    placeholder="Search Here"
+                                    title="Search here"
+                                />
+                                <button className="btn btn-primary btn-icon-text">
+                                    Tìm kiếm
+                                </button>
+                            </form>
+                        </div>
+                        <div className="col-3 d-flex align-items-center">
+                            <select className="form-control">
+                                <option value="">Sắp xếp</option>
+                                <option value="">ABC def</option>
+                                <option value="">ABC def</option>
+                                <option value="">ABC def</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div className="col-6 ">
-                    <form className="search-form" action="#">
-                        <i className="icon-search" />
-                        <input
-                            type="search"
-                            className="form-control"
-                            placeholder="Search Here"
-                            title="Search here"
-                        />
-                        <button className="btn btn-primary btn-icon-text">
-                            Tìm kiếm
-                        </button>
-                    </form>
-                </div>
-                <div className="col-3 d-flex align-items-center">
-                    <select className="form-control">
-                        <option value="">Sắp xếp</option>
-                        <option value="">ABC def</option>
-                        <option value="">ABC def</option>
-                        <option value="">ABC def</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </>
-    )
-  }
+            </>
+        )
+    }
 }

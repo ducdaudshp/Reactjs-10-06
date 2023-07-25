@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 
 export default class Product extends Component {
+
+    handleView = (product) => {
+        this.props.onView(true, "Close", product);
+    }
+
+    handleEdit = () => {
+        this.props.onEdit(true, "Edit");
+    }
+
     render() {
         let {renderProduct, stt} = this.props;
         return (
@@ -19,12 +28,14 @@ export default class Product extends Component {
                             <button
                                 type="button"
                                 className="btn btn-danger btn-icon-text"
+                                onClick={()=>this.handleView(renderProduct)}
                             >
                                 Xem
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-warning btn-icon-text"
+                                onClick={this.handleEdit}
                             >
                                 Sửa
                             </button>
