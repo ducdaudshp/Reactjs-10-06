@@ -62,6 +62,15 @@ export default class App extends Component {
     this.handleAddOrUpdate(toggle, actionName);
   }
 
+  //hàm xử lý sự kiện xóa
+  handleDelete = (product) => {
+    let {products} = this.state;
+    let listProduct = products.filter(x => x.productId !== product.productId)
+    this.setState({
+      products: listProduct
+    })
+  }
+
   render() {
     let { products } = this.state;
 
@@ -88,6 +97,7 @@ export default class App extends Component {
                   renderProducts={products}
                   onView={this.handleAddOrUpdate}
                   onEdit={this.handleAddOrUpdate}
+                  onDelete={this.handleDelete}
                 />
                 {/* ListStudent */}
               </div>

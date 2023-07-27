@@ -8,9 +8,14 @@ export default class ListProduct extends Component {
         this.props.onView(toggle, actionName, product);
     }
 
-    //hàm xử lý sự kiện Edit
-    handleEdit = (toggle, actionName) => {
-        this.props.onEdit(toggle, actionName);
+    //hàm xử lý sự kiện sửa
+    handleEdit = (toggle, actionName, product) => {
+        this.props.onEdit(toggle, actionName, product);
+    }
+
+    //hàm xử lý sự kiện xóa
+    handleDelete = (toggle, actionName, product) => {
+        this.props.onDelete(toggle, actionName, product)
     }
 
     render() {
@@ -22,6 +27,7 @@ export default class ListProduct extends Component {
                 stt={index + 1}
                 onView={this.handleView}
                 onEdit={this.handleEdit}
+                onDelete={this.handleDelete}
             />
         })
         return (

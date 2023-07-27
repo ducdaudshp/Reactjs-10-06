@@ -6,12 +6,16 @@ export default class Product extends Component {
         this.props.onView(true, "Close", product);
     }
 
-    handleEdit = () => {
-        this.props.onEdit(true, "Edit");
+    handleEdit = (product) => {
+        this.props.onEdit(true, "Update", product);
+    }
+
+    handleDelete = (product) => {
+        this.props.onDelete(product)
     }
 
     render() {
-        let {renderProduct, stt} = this.props;
+        let { renderProduct, stt } = this.props;
         return (
             <>
                 <tr>
@@ -28,20 +32,21 @@ export default class Product extends Component {
                             <button
                                 type="button"
                                 className="btn btn-danger btn-icon-text"
-                                onClick={()=>this.handleView(renderProduct)}
+                                onClick={() => this.handleView(renderProduct)}
                             >
                                 Xem
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-warning btn-icon-text"
-                                onClick={this.handleEdit}
+                                onClick={() => this.handleEdit(renderProduct)}
                             >
                                 Sửa
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-success btn-icon-text"
+                                onClick={() => this.handleDelete(renderProduct)}
                             >
                                 Xóa
                             </button>
