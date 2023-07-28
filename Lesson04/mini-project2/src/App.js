@@ -58,13 +58,39 @@ export default class App extends Component {
   }
 
   //hàm xử lý sự kiện sunmit Form
-  handleSubmit = (toggle, actionName) => {
-    this.handleAddOrUpdate(toggle, actionName);
+  handleSubmit = (toggle, actionName, product) => {
+    //xử lý khi sửa
+    if (actionName === "Update") {
+      let { products } = this.state; //lấy giá trị mảng hiện tại
+      for (let index = 0; index < products.length; index++) {
+        if (products[index].productId === product.productId) {
+          products[index] = product;
+          break;
+        }
+      }
+      this.setState({
+        products: products
+      })
+    }
+
+    //xử lý khi thêm
+    if (actionName === "Add") {
+      let {products}=this.state; //lấy giá trị mảng hiện tại
+      products.push(product)
+      this.setState({
+        products: products
+      })
+    }
+    this.setState({
+      isToggle: toggle,
+      actionName: actionName,
+      product: product
+    })
   }
 
   //hàm xử lý sự kiện xóa
   handleDelete = (product) => {
-    let {products} = this.state;
+    let { products } = this.state;
     let listProduct = products.filter(x => x.productId !== product.productId)
     this.setState({
       products: listProduct

@@ -9,12 +9,13 @@ export default class FormProduct extends Component {
             descriptions: "",
             price: 0,
             quantity: 0,
+            image: "",
         }
     }
 
     componentWillMount = () => {
-        let { renderProduct, renderActionName } = this.props
-        if (renderActionName === "Close" || renderActionName === "Update") {
+        let { renderProduct, actionName } = this.props
+        if (actionName === "Close" || actionName === "Update") {
             this.setState({
                 productId: renderProduct.productId,
                 productName: renderProduct.productName,
@@ -27,8 +28,8 @@ export default class FormProduct extends Component {
 
     //khi chọn đối tượng khác nhau
     UNSAFE_componentWillReceiveProps = (nextProps) => {
-        let { renderProduct, renderActionName } = this.nextProps
-        if (renderActionName === "Close" || renderActionName === "Update") {
+        let { renderProduct, actionName } = nextProps
+        if (actionName === "Close" || actionName === "Update") {
             this.setState({
                 productId: renderProduct.productId,
                 productName: renderProduct.productName,
@@ -52,19 +53,19 @@ export default class FormProduct extends Component {
         let name = event.target.name;
         let value = event.target.value;
         this.setState({
-            [name]:value
+            [name]: value
         })
     }
 
     //hàm xử lý sự kiện submit form
-    handleSubmit = (event) => {
+    handleSubmit = (event, actionName) => {
         event.preventDefault();
         //chuyển thông tin lên App thông qua props
-        this.props.onSubmit(this.state)
+        this.props.onSubmit(false, actionName, this.state)
     }
 
     render() {
-        let { actionName, renderProduct } = this.props; //lấy tên nút để hiển thị
+        let { actionName } = this.props; //lấy tên nút để hiển thị
         return (
             <>
                 <div className="card">
@@ -77,7 +78,8 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={renderProduct.productId}
+                                        value={this.state.productId}
+                                        name="productId"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -88,7 +90,8 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={renderProduct.productName}
+                                        value={this.state.productName}
+                                        name="productName"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -99,7 +102,8 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={renderProduct.descriptions}
+                                        value={this.state.descriptions}
+                                        name="descriptions"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -110,7 +114,8 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={renderProduct.price}
+                                        value={this.state.price}
+                                        name="price"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -121,7 +126,8 @@ export default class FormProduct extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={renderProduct.quantity}
+                                        value={this.state.quantity}
+                                        name="quantity"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -132,6 +138,8 @@ export default class FormProduct extends Component {
                                     <input
                                         type="file"
                                         className="form-control"
+                                        value={this.state.image}
+                                        name="image"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -139,7 +147,7 @@ export default class FormProduct extends Component {
                             <button
                                 type="submit"
                                 className="btn btn-primary me-2"
-                                onClick={this.handleSubmit}
+                                onClick={(event) => this.handleSubmit(event, actionName)}
                             > {actionName}
                             </button>
                         </form>
