@@ -1,0 +1,32 @@
+---Mini project---
+Todolist ( html ) -> Reactjs app ( jsx )
+1. Tạo ứng dụng reactjs app
+2. Chuyển html -> jsx 
+    - copy jsx -> App.jsx
+    - copy file tài nguyên vào thư mục public
+    - mở file index.html
+3. Phân chia component
+    App.js
+        - Title.js
+        - Control.js
+        - Form.js
+        - ListTask.js
+            - Task.js
+4. Phân tích chức năng ứng dụng
+    - Hiển thị danh sách (ListTask)
+    - Thêm Task
+    - Sửa Task
+    - Xóa Task
+    - Tìm kiếm Task
+    - Sắp xếp
+4.1: Hiển thị danh sách ListTask
+    - Tổ chức dữ liệu (mock data) - useState
+    - render: 
+        + App -> ListTask -> Task
+4.2: Ẩn hiện form chức năng
+    - isToggle: false
+    - onClick (AddTask) -> isToggle:true
+    - ẩn form khi click Cancer
+4.3: Thêm mới Task
+    - Xử lý cho phép thay đổi/ nhập mới dữ liệu trên form
+        + onChange
