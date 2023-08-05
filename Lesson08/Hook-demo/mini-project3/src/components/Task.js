@@ -16,6 +16,7 @@ function Task({ renderTask, onEdit, onDelete }) {
     }
 
     const handleDelete = (task) => {
+        console.log("delete",task);
         onDelete(task);
     }
 
@@ -34,7 +35,7 @@ function Task({ renderTask, onEdit, onDelete }) {
                     Edit
                 </button>
                 <button type="button" className="btn btn-danger"
-                    onCLick={() => handleDelete(renderTask)}>
+                    onClick={() => handleDelete(renderTask)}>
                     Delete
                 </button>
             </td>

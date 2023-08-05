@@ -7,8 +7,8 @@ function ListTask({ renderListTasks, onEdit, onDelete }) {
         onEdit(toggle, task);
     }
 
-    const handleDelete = (toggle, task) => {
-        onDelete(toggle, task)
+    const handleDelete = (task) => {
+        onDelete(task)
     }
     //render task
     let elementTask = renderListTasks.map((task, index) => {
