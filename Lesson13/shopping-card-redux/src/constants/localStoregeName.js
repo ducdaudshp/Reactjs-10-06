@@ -1,0 +1,1 @@
+export const LOCAL_STORAGE_NAME = "DEV2302_RJT7CN"

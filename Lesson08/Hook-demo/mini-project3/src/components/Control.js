@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Control({onToggle}) {
+function Control({ onToggle, onSearch }) {
+
+    const [keyword, setKeyword] = useState('');
+
+    const handleSearch = () => {
+        onSearch(keyword);
+    }
 
     const handleToggle = () => {
         onToggle(true);
@@ -15,9 +21,13 @@ function Control({onToggle}) {
                         type="text"
                         className="form-control"
                         placeholder="Search for..."
+                        name='keyword'
+                        value={keyword}
+                        onChange={(ev) => setKeyword(ev.target.value)}
                     />
                     <span className="input-group-btn">
-                        <button className="btn btn-info" type="button">
+                        <button className="btn btn-info" type="button"
+                            onClick={handleSearch}>
                             Go!
                         </button>
                     </span>

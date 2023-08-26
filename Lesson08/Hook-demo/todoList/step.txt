@@ -30,3 +30,15 @@ Todolist ( html ) -> Reactjs app ( jsx )
 4.3: Thêm mới Task
     - Xử lý cho phép thay đổi/ nhập mới dữ liệu trên form
         + onChange
+4.4: Sửa
+    - Task (Component):
+        + onClick -> (task) -> ListTask (task) -> App
+4.5: Xóa
+    - Task (Component): 
+        + onClick: (task) -> ListTask -> App
+5. Tổ chức dữ liệu trong localStorage
+
+6. Tìm kiếm
+    - Control:
+        + onClick (Go) :
+            ++ chuyển keywwork -> App -> re-render

@@ -1,0 +1,7 @@
+#8. Xác định các hằng cho các chức năng trong ứng dụng và các thông báo
+    - constants:
+        -> actionType.js
+            ++ LIST_PRODUCT = "LIST_PRODUCT" -> chức năng (act_list_product) hiển thị thông tin sản phẩm
+            ++ BUY_ITEM = "BUY_ITEM" -> Chức năng khi người dùng chọn mua hàng
+            ++ UPDATE_ITEM = "UPDATE_ITEM" -> Chức năng khi người dùng cập nhật lại giỏ hàng
+            ++ 

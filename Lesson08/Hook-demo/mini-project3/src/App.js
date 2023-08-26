@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Control from './components/Control';
 import Form from './components/Form';
 import ListTask from './components/ListTask';
@@ -14,7 +14,18 @@ function App() {
   ];
 
   //tạo state listTask
-  const [listTasks, setListTasks] = useState(initListTask);
+  // const [listTasks, setListTasks] = useState(initListTask);
+  const [listTasks, setListTasks] = useState(() => {
+    //lấy dữ liệu từ localStorage
+    let lists = JSON.parse(localStorage.getItem("DEV2302GH_RJ_DB"));
+    if (lists === null) {
+      return initListTask;
+    } else {
+      return lists;
+    }
+  });
+
+  
 
   //form: show/hide
   //ẩn hiện form
@@ -59,12 +70,30 @@ function App() {
         }
       }
       setListTasks(list);
+      localStorage.setItem("DEV2302GH_RJ_DB", JSON.stringify(listTasks))
     }
     setToggle(toggle); // ẩn form
   }
 
+  //xóa
   const handleDelete = (task) => {
-    setListTasks(listTasks.filter(x => x.taskId !== task.taskId))
+    // setListTasks(listTasks.filter(x => x.taskId !== task.taskId))
+    setListTasks(prev => {
+      let newList = prev.filter(x => x.taskId !== task.taskId)
+      return newList;
+    })
+  }
+
+  //cập nhật localStorage cho listTasks mỗi khi có dữ liệu thay đổi
+  useEffect(() => {
+    if (listTasks.length === 0) return
+    localStorage.setItem("DEV2302GH_RJ_DB", JSON.stringify(listTasks));
+  }, [listTasks])
+
+  //tìm kiếm
+  const handleSearch = (keyword) => {
+    let tasksResult = listTasks.filter(x => x.taskName.toLowerCase().includes(keyword.toLowerCase()));
+    setListTasks(tasksResult);
   }
 
   const elementForm = (isToggle === true) ? <Form renderTask={task}
@@ -77,7 +106,7 @@ function App() {
       <Title />
       {/* TITLE : END */}
       {/* CONTROL (SEARCH + SORT + ADD) : START */}
-      < Control onToggle={handleAddOrEdit} />
+      < Control onToggle={handleAddOrEdit} onSearch={handleSearch} />
       {/* CONTROL (SEARCH + SORT + ADD) : END */}
       {/* FORM : START */}
       {elementForm}
