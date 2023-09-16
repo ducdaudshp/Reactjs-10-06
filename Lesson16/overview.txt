@@ -1,0 +1,25 @@
+ReactJS - Mock API
+I. Xây dựng các mock API
+    1. Tạo mock api local với JSON Server
+        - Tạo một thư mục và cài đặt npm cho thư mục
+            npm init --yes
+        - Cài đặt JSON Server
+            npm install -g json-server
+        - Tạo db.json trong thư mục gốc
+            ++ tạo các mock data
+        -Start Server JSON
+            + Tạo start trong script của package.json
+                "start":"json-server --watch db.json --port 3001"
+            +Start JSON Server
+                npm start
+    2. Mock API online với https://mockapi.io
+II. ReactJS Project -> Làm việc với mock API
+CRUD: Create - Read - Update - Delete
+    1. Tạo ứng dụng reactjs (react-api-client)
+    2. Cài đặt package axios cho ứng dụng
+        npm install --save axios
+    3. CRUD:
+        3.a: Read (fetch all) - GET
+            + call API
+            + display (users) -> danh sách
+        3.b: Create (Insert - data)
